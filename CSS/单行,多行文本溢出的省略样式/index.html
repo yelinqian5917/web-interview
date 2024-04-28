@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 50px;
+        /* height: 150px; */
+        /* overflow: hidden;
+        text-overflow: ellipsis; */
+        white-space: pre;
+        /* word-wrap: break-word; */
+      }
+      .demo {
+        position: relative;
+        line-height: 20px;
+        /* height: 40px; */
+        width: 50px;
+        overflow: hidden;
+      }
+      .demo::after {
+        content: "...";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 20px 0 10px;
+      }
+      p {
+        width: 400px;
+        border-radius: 1px solid red;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      这是一段很长的文本这是一段很长的文本
+      <br />这是一段很长的文本这是一段很长的文本
+    </div>
+    <p>
+      这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本
+      这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本
+    </p>
+  </body>
+</html>

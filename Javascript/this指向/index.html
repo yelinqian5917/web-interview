@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // const obj = {
+  //   name: '123',
+  //   func: () => {
+  //     const name = '姓名'
+  //     console.log(this)
+  //   }
+  // }
+  // const func = () => {
+  //   const name = '姓名'
+  //   console.log(this)
+  // }
+  // obj.func()
+  const init = function (num) {
+    let total = num
+    // 
+    const add = function (addNum) {
+      total = total + addNum
+      return this
+    }
+    // 
+    const reduce = function () {
+      return this
+    }
+    // 
+    const ride = function () {
+      return this
+    }
+    // 
+    const division = function () {
+      return this
+    }
+    debugger
+    return {
+      add, reduce, ride, division
+    }
+  }
+  init(15)
+</script>
+
+</html>

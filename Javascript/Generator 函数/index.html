@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    function* func() {
+      console.log("one");
+      yield "1";
+      console.log("two");
+      const res = yield "2";
+
+      console.log("three");
+      debugger;
+      return "3";
+    }
+    const f = func();
+    const result = f.next();
+    // one
+    // {value: "1", done: false}
+
+    f.next("传参");
+    // two
+    // {value: "2", done: false}
+
+    f.next();
+    // three
+    // {value: "3", done: true}
+
+    f.next();
+    // {value: undefined, done: true}
+    // generator实现简单的async await
+    // const test = (data) =>
+    //   new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve(data);
+    //     });
+    //   });
+
+    // function autoStart(generator) {
+    //   const gen = generator();
+    //   function _next(val) {
+    //     return new Promise((resolve, reject) => {
+    //       try {
+    //         var p = gen.next(val);
+    //         if (p.done) resolve(p.value);
+    //       } catch (err) {
+    //         reject(err);
+    //       }
+    //       //防止p.value为基本类型的情况
+    //       Promise.resolve(p.value).then((res) => {
+    //         _next(res);
+    //       });
+    //     });
+    //   }
+    //   _next();
+    // }
+
+    // function* generator() {
+    //   const data = yield test(1);
+    //   console.log(data);
+    //   console.log(2);
+    //   const data2 = yield 3;
+    //   console.log(data2);
+    //   console.log(4);
+    // }
+    // autoStart(generator);
+
+    // 1
+    // 2
+    // 3
+    // 4
+    //完美输出
+  </script>
+</html>

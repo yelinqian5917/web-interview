@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+
+  <script>
+    function test() {
+      return new Promise((resolve, reject) => {
+        resolve("1");
+      }).then((res) => {
+        console.log(res);
+      });
+    }
+
+    class MyPromise {
+      static status = "";
+      //
+      static Pending = "等待";
+      static Fulfilled = "成功";
+      static Rejected = "失败";
+      constructor(func) {
+        this.state = MyPromise.Pending;
+        func(this.resolve.bind(this), this.reject.bind(this));
+      }
+      then(onFullFilled, onRejected) {
+        return new MyPromise();
+      }
+      catch() {}
+      resolve() {}
+      reject() {}
+    }
+
+    // javaScript中将函数作为参数 ？
+  </script>
+</html>

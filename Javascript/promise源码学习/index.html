@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      class MyPromise {
+        static Pending = "待定";
+        static FulFilled = "成功";
+        static Rejected = "失败";
+        constructor(func) {
+          this.state = MyPromise.Pending;
+          this.result = null;
+          this.fulfilledCallbacks = [];
+          this.rejectedCallbacks = [];
+          try {
+            func(this.resolve.bind(this), this.reject.bind(this));
+          } catch (e) {
+            this.reject(e);
+          }
+        }
+        resolve(res) {
+          setTimeout(() => {
+            if (this.state == MyPromise.Pending) {
+              this.state = MyPromise.FulFilled;
+              this.result = res;
+              this.fulfilledCallbacks.forEach((callback) => {
+                callback(res);
+              });
+            }
+          });
+        }
+        reject(reason) {
+          setTimeout(() => {
+            if (this.state == MyPromise.Pending) {
+              this.state = MyPromise.Rejected;
+              this.result = reason;
+              this.rejectedCallbacks.forEach((callback) => {
+                callback(reason);
+              });
+            }
+          });
+        }
+        then(onFullFilled, onRejected) {
+          return new MyPromise((resolve, reject) => {
+            onFullFilled =
+              typeof onFullFilled == "function" ? onFullFilled : () => {};
+            onRejected =
+              typeof onRejected == "function" ? onRejected : () => {};
+            if (this.state == MyPromise.Pending) {
+              this.fulfilledCallbacks.push(onFullFilled);
+              this.rejectedCallbacks.push(onRejected);
+            }
+            if (this.state == MyPromise.FulFilled) {
+              setTimeout(() => {
+                onFullFilled(this.result);
+              });
+            }
+            if (this.state == MyPromise.Rejected) {
+              setTimeout(() => {
+                onRejected(this.result);
+              });
+            }
+          });
+        }
+      }
+      new MyPromise((resolve, reject) => {
+        resolve("成功");
+      }).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="search-btn">搜索</button>
+
+</body>
+<script>
+  // 防抖 节流里面包含很多 知识点
+  // ...args剩余参数（展开运算符）的用法及与arguments的区别
+  // 如果函数的最后一个命名参数以…为前缀，则它将成为一个数组，其中从0（包括）到theArgs.length（排除）的元素由传递给函数的实际参数提供。
+  // let const var的区别
+  // 箭头函数的this指向
+  // 默认指向在定义它时所处的对象(宿主对象)，此处指父级作用域
+  // 1.argument 
+  // 防抖
+  function debounce(func, delay) {
+    let timer = null;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        console.log(this, args)
+        func.apply(this, args);
+      }, delay);
+    };
+  }
+  // 节流
+  // **总结：**某个操作希望上一次的完成后再进行下一次，或者希望隔一段时间触发一次。
+  function throttle(fn, delay) {
+    let timer = null
+    return () => {
+      if (timer) { return }
+      timer = setTimeout(() => {
+        // 首先判断this指向 然后看一下arguments
+        // 默认指向定义他时所处的对象 window
+        console.log(this, arguments)
+        fn.apply(this, arguments)
+        timer = null
+      }, delay);
+    }
+  }
+
+
+  // 使用防抖优化搜索框输入
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  function search() {
+
+  }
+  // searchInput.addEventListener('input', debounce(search, 500));
+  // searchBtn.addEventListener('click', search);
+  // searchBtn.addEventListener('click', debounce(search, 500))
+  searchBtn.addEventListener('click', throttle(search, 2000))
+  // function clickFun() {
+  //   console.log(argument)
+  // }
+  // searchBtn.addEventListener('click', clickFun)
+</script>
+
+</html>

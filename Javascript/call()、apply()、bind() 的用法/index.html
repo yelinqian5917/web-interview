@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  let test = {
+    a: 2,
+    b: 3,
+    c: function (can1, can2, can3) {
+      console.log(this)
+      // console.log(can1, can2, can3)
+    }
+  }
+  let obj = {
+    b: 7,
+    c: 5,
+    d: '45'
+  }
+  const arr = [1, 2, 3, 4, 5, 67, 8]
+  // console.log(...arr)
+  test.c()
+
+  // test.c.call(obj, ...arr)
+
+  // function aaa() {
+  //   console.log(this)
+
+  // }
+  // aaa()
+
+
+</script>
+
+</html>

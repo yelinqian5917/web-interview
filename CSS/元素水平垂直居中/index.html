@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>居中</title>
+    <style>
+      .father {
+        /* display: table-cell;
+        display: inline-block; */
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        display: grid;
+        /* justify-content: center;
+         */
+        place-content: center;
+      }
+      .child {
+        width: 200px;
+        height: 200px;
+        background: skyblue;
+      }
+      .son {
+        display: inline-block;
+        /* width: 100px;
+        height: 100px; */
+        background: red;
+      }
+      tr {
+        /* height: 60px; */
+      }
+      .vertical {
+        /* display: table-cell;
+        height: 60px;
+        vertical-align: middle; */
+        /* line-height: 60; */
+        line-height: 2;
+        height: 60px;
+      }
+      .vertical-child {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="child"></div>
+    </div>
+    <!-- 表格居中 -->
+    <table>
+      <thead>
+        <tr>
+          <th>列标题1</th>
+          <th>列标题2</th>
+          <th>列标题3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>行1，列1</td>
+          <td>行1，列2</td>
+          <td>行1，列3</td>
+        </tr>
+        <tr>
+          <td>行2，列1</td>
+          <td>行2，列2</td>
+          <td>行2，列3</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--  vertical-align详解 -->
+    <div class="vertical">
+      789
+      <!-- <div class="vertical-child">789456</div> -->
+    </div>
+  </body>
+</html>
